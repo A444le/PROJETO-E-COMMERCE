@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "E_CommerceAPI.Controllers.ProdutoController",
+    "Method": "ListarProduto",
+    "RelativePath": "api/Produto",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
