@@ -8,20 +8,20 @@ namespace E_CommerceAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProdutoController : ControllerBase
+    public class ItemDoPedidoController : ControllerBase
     {
-        private IProdutoRepository _produtoRepository;
+        private IProdutoRepository _ItemdoPedidoRepository;
         private readonly EcommerceContext _context;
-        public ProdutoController(EcommerceContext context)
+
+        public ItemDoPedidoController(EcommerceContext context)
         {
             _context = context;
-            _produtoRepository = new ProdutoRepository(_context);
+            _ItemdoPedidoRepository = new ItemDoPedidoRepository(_context);
         }
         [HttpGet]
-        public IActionResult ListarProduto()
+        public IActionResult ListarPagamentos()
         {
-            return Ok(_produtoRepository.ListarTodos());
+            return Ok(_ItemdoPedidoRepository.ListarTodos());
         }
-
     }
 }
