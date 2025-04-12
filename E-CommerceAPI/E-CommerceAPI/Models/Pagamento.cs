@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace E_CommerceAPI.Models;
 
+//ESTA PARTE SERIA A TABELA REF. AO DRAW.IO 
 public partial class Pagamento
 {
     public int IdPagamento { get; set; }

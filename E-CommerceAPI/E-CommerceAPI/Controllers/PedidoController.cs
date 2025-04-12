@@ -1,5 +1,6 @@
 ﻿using E_CommerceAPI.Context;
 using E_CommerceAPI.Interfaces;
+using E_CommerceAPI.Models;
 using E_CommerceAPI.Repositorios;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,15 @@ namespace E_CommerceAPI.Controllers
         public IActionResult ListarPagamentos()
         {
             return Ok(_pedidoRepository.ListarTodos());
+        }
+        [HttpPost]
+        public IActionResult CadastrarProduto(Pedido Pedido)
+        {
+            _pedidoRepository.Cadastrar(Pedido);
+
+            _context.SaveChanges();
+
+            return Created();
         }
     }
 }

@@ -162,3 +162,8 @@ C:\Users\FIC\Desktop\PROJETO E-COMMERCE\PROJETO E-COMMERCE\E-CommerceAPI\E-Comme
 C:\Users\FIC\Desktop\PROJETO E-COMMERCE\PROJETO E-COMMERCE\E-CommerceAPI\E-CommerceAPI\obj\Debug\net9.0\E-CommerceAPI.csproj.AssemblyReference.cache
 C:\Users\FIC\Desktop\PROJETO E-COMMERCE\PROJETO E-COMMERCE\E-CommerceAPI\E-CommerceAPI\obj\Debug\net9.0\E-Commer.110D995E.Up2Date
 C:\Users\FIC\Desktop\PROJETO E-COMMERCE\PROJETO E-COMMERCE\E-CommerceAPI\E-CommerceAPI\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\FIC\Desktop\PROJETO E-COMMERCE\PROJETO E-COMMERCE\E-CommerceAPI\E-CommerceAPI\bin\Debug\net9.0\Microsoft.OpenApi.dll
+C:\Users\FIC\Desktop\PROJETO E-COMMERCE\PROJETO E-COMMERCE\E-CommerceAPI\E-CommerceAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\FIC\Desktop\PROJETO E-COMMERCE\PROJETO E-COMMERCE\E-CommerceAPI\E-CommerceAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\FIC\Desktop\PROJETO E-COMMERCE\PROJETO E-COMMERCE\E-CommerceAPI\E-CommerceAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\FIC\Desktop\PROJETO E-COMMERCE\PROJETO E-COMMERCE\E-CommerceAPI\E-CommerceAPI\obj\Debug\net9.0\E-CommerceAPI.MvcApplicationPartsAssemblyInfo.cs

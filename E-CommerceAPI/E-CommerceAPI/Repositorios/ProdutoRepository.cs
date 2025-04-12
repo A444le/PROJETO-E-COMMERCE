@@ -1,6 +1,7 @@
 ﻿using E_CommerceAPI.Context;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace E_CommerceAPI.Repositorios
 {

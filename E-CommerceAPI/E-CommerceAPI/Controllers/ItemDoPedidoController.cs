@@ -1,5 +1,6 @@
 ﻿using E_CommerceAPI.Context;
 using E_CommerceAPI.Interfaces;
+using E_CommerceAPI.Models;
 using E_CommerceAPI.Repositorios;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ namespace E_CommerceAPI.Controllers
     [ApiController]
     public class ItemDoPedidoController : ControllerBase
     {
-        private IProdutoRepository _ItemdoPedidoRepository;
+        private IItemDoPedidoRepository _ItemdoPedidoRepository;
         private readonly EcommerceContext _context;
 
         public ItemDoPedidoController(EcommerceContext context)
@@ -23,5 +24,15 @@ namespace E_CommerceAPI.Controllers
         {
             return Ok(_ItemdoPedidoRepository.ListarTodos());
         }
+        [HttpPost]
+        public IActionResult CadastrarProduto(ItemPedido ItemDoPedido)
+        {
+            _ItemdoPedidoRepository.Cadastrar(ItemDoPedido);
+
+            _context.SaveChanges(); 
+
+            return Created();
+        }
     }
 }
+
