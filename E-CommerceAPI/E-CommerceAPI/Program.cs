@@ -1,5 +1,8 @@
+using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
 using E_CommerceAPI.Context;
+using E_CommerceAPI.Interfaces;
+using E_CommerceAPI.Repositorios;
 using Microsoft.AspNetCore.Components.Forms;
 
 
@@ -10,8 +13,16 @@ builder.Services.AddControllers();
 //Swagger
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddTransient<EcommerceContext, EcommerceContext>();
+//O .NET vai criar os objetos (Injecao de dependencia)
 
+//AddTransient - o C# cria uma instancia nova, toda vez quando o metodo e chamado.
+//AddScoped - O C# cria uma instancia nova, toda vez quando ele criar um controller.
+//Addsingleton - 
+
+builder.Services.AddScoped<EcommerceContext, EcommerceContext>();
+builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
+builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
+builder.Services.AddTransient<IpagamentoRepository, PagamentoRepository>();
 var app = builder.Build();
 
 //Swagger 
@@ -22,6 +33,7 @@ app.UseSwaggerUI();
 app.MapControllers();
 
 app.Run();
+
 
 
 

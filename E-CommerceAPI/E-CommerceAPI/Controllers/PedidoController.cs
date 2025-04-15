@@ -12,12 +12,9 @@ namespace E_CommerceAPI.Controllers
     public class PedidoController : ControllerBase
     {
         private IPedidoRepository _pedidoRepository;
-        private readonly EcommerceContext _context;
-
-        public PedidoController(EcommerceContext context)
+        public PedidoController(PedidoRepository pedidoRepository)
         {
-            _context = context;
-            _pedidoRepository = new PedidoRepository(_context);
+            _pedidoRepository = pedidoRepository;
         }
         [HttpGet]
         public IActionResult ListarPagamentos()
@@ -29,7 +26,7 @@ namespace E_CommerceAPI.Controllers
         {
             _pedidoRepository.Cadastrar(Pedido);
 
-            _context.SaveChanges();
+          
 
             return Created();
         }

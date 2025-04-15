@@ -37,7 +37,8 @@ namespace E_CommerceAPI.Repositorios
             public void Cadastrar(Pedido Pedido)
             {
                 _context.Pedidos.Add(Pedido);
-            }
+            _context.SaveChanges();
+        }
 
             public void Deletar(int id)
             {
