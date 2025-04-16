@@ -1,4 +1,5 @@
-﻿using E_CommerceAPI.Context;
+﻿using System.Linq.Expressions;
+using E_CommerceAPI.Context;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
 using E_CommerceAPI.Repositorios;
@@ -28,11 +29,51 @@ namespace E_CommerceAPI.Controllers
         [HttpPost]
         public IActionResult CadastrarProduto(Produto Produto)
         {
-            _produtoRepository.Cadastrar(Produto);
 
             return Created();
         }
-    
+        [HttpGet("{id}")]
+        public IActionResult ListarPorId(int id)
+        {
+            Produto produto = _produtoRepository.BuscarPorId(id);
+            if(produto == null)
+            {
+                return NotFound();
+            }
+            return Ok(produto); 
 
+        }
+       
+        [HttpPut("{id}")]
+        public IActionResult Editar(int id, Produto prod)
+        {
+            try
+            {
+                _produtoRepository.Atualizar(id, prod);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return NotFound("Produto nao encontrado!");
+            } 
+                
+        }
+
+
+
+        [HttpDelete("{id}")]
+        public IActionResult Deletar(int id)
+        {
+            try
+            {
+               _produtoRepository.Deletar(id);
+                return NoContent();
+            }
+
+            catch  (Exception ex)
+            {
+                return NotFound("Produto nao encontrado!");
+            }
+        }
     }
 }

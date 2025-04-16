@@ -11,25 +11,22 @@ namespace E_CommerceAPI.Controllers
     [ApiController]
     public class ItemDoPedidoController : ControllerBase
     {
-        private IItemDoPedidoRepository _ItemdoPedidoRepository;
-        private readonly EcommerceContext _context;
-
-        public ItemDoPedidoController(EcommerceContext context)
+        private IItemDoPedidoRepository _ItemDoPedidoRepository;
+        public ItemDoPedidoController(ItemDoPedidoRepository ItemDoPedidoRepository)
         {
-            _context = context;
-            _ItemdoPedidoRepository = new ItemDoPedidoRepository(_context);
+            _ItemDoPedidoRepository = ItemDoPedidoRepository;
         }
         [HttpGet]
         public IActionResult ListarPagamentos()
         {
-            return Ok(_ItemdoPedidoRepository.ListarTodos());
+            return Ok(_ItemDoPedidoRepository.ListarTodos());
         }
         [HttpPost]
         public IActionResult CadastrarProduto(ItemPedido ItemDoPedido)
         {
-            _ItemdoPedidoRepository.Cadastrar(ItemDoPedido);
 
-            _context.SaveChanges(); 
+            _ItemDoPedidoRepository.Cadastrar(ItemDoPedido);
+
 
             return Created();
         }

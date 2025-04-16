@@ -28,7 +28,8 @@ namespace E_CommerceAPI.Repositorios
 
         public void Cadastrar(ItemPedido ItemPedido)
         {
-            throw new NotImplementedException();
+            _context.ItemPedidos.Add(ItemPedido);
+            _context.SaveChanges();
         }
 
         public void Deletar(int id)

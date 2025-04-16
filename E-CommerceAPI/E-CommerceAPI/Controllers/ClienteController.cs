@@ -14,13 +14,10 @@ namespace E_CommerceAPI.Controllers
     {
         // ESSES CODIGOS SAO OBRIGATORIOS 
         private IClienteRepository _ClienteRepository;
-        private readonly EcommerceContext _context;
-
-        public ClienteController(EcommerceContext context)
+        public ClienteController(ClienteRepository ClienteRepository)
         {
-            _context = context;
-            _ClienteRepository = new ClienteRepository(_context);
-        } 
+            _ClienteRepository = ClienteRepository;
+        }
         //PARA APARECER NO SITE (LISTAR NO SITE)
         [HttpGet]
         public IActionResult ListarPagamentos()
@@ -35,7 +32,7 @@ namespace E_CommerceAPI.Controllers
             _ClienteRepository.Cadastrar(Cliente);
 
             // 2 - Salvo a alteracao
-            _context.SaveChanges(); // Sempre colocar o SaveChanges quando for mudar algo no Banco de Dados
+           
 
             // 3 - Retorne um resultado
             // 201 - Created <Criado>
