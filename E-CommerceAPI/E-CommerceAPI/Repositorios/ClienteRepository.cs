@@ -24,10 +24,22 @@ namespace E_CommerceAPI.Repositorios;
                 _context = context;
             }
 
-            public void Atualizar(int id, Cliente Cliente)
-            {
-                throw new NotImplementedException();
-            }
+    public void Atualizar(int id, Cliente cliente)
+    {
+        Cliente clienteEncontrado = _context.Clientes.Find(id);
+        if (clienteEncontrado == null)
+        {
+
+            throw new Exception();
+        }
+        clienteEncontrado.NomeCompleto = cliente.NomeCompleto;
+        clienteEncontrado.Email = cliente.Email;
+        clienteEncontrado.Telefone = cliente.Telefone;
+        clienteEncontrado.Endereco = cliente.Endereco;
+        clienteEncontrado.DataCadastro = cliente.DataCadastro;
+
+        _context.SaveChanges();
+    }
 
     public Cliente BuscarPorEmailSenha(string email, string senha)
     {

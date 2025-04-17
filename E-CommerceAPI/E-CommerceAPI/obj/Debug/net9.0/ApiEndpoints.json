@@ -122,7 +122,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Produto",
+        "Name": "produto",
         "Type": "E_CommerceAPI.Models.Produto",
         "IsRequired": true
       }
