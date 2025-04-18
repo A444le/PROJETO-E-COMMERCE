@@ -46,6 +46,90 @@
         }
       }
     },
+    "/api/Cliente/{id}": {
+      "get": {
+        "tags": [
+          "Cliente"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Cliente"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cliente"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cliente"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Cliente"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cliente"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ItemDoPedido": {
       "get": {
         "tags": [
@@ -320,6 +404,10 @@
             "type": "string",
             "nullable": true
           },
+          "senha": {
+            "type": "string",
+            "nullable": true
+          },
           "dataCadastro": {
             "type": "string",
             "format": "date",
@@ -344,18 +432,15 @@
           },
           "idPedido": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "idProduto": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "quantidade": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "idPedidoNavigation": {
             "$ref": "#/components/schemas/Pedido"
@@ -375,8 +460,7 @@
           },
           "idPedido": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "formadePagamento": {
             "type": "string",
@@ -388,8 +472,7 @@
           },
           "dataPagamento": {
             "type": "string",
-            "format": "date-time",
-            "nullable": true
+            "format": "date-time"
           },
           "idPedidoNavigation": {
             "$ref": "#/components/schemas/Pedido"
@@ -406,8 +489,7 @@
           },
           "dataPedido": {
             "type": "string",
-            "format": "date",
-            "nullable": true
+            "format": "date"
           },
           "statusPedido": {
             "type": "string",
@@ -420,8 +502,7 @@
           },
           "idCliente": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "idClienteNavigation": {
             "$ref": "#/components/schemas/Cliente"
@@ -460,13 +541,11 @@
           },
           "preco": {
             "type": "number",
-            "format": "double",
-            "nullable": true
+            "format": "double"
           },
           "estoqueDisponivel": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "categoria": {
             "type": "string",

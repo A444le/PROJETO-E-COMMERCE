@@ -19,11 +19,13 @@ builder.Services.AddSwaggerGen();
 //AddScoped - O C# cria uma instancia nova, toda vez quando ele criar um controller.
 //Addsingleton - 
 
-builder.Services.AddScoped<EcommerceContext, EcommerceContext>();
+builder.Services.AddScoped<EcommerceContext>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
 builder.Services.AddTransient<IpagamentoRepository, PagamentoRepository>();
-var app = builder.Build();
+
+
+var app = builder.Build(); //O C# cosntroi o site por meio desse codigo
 
 //Swagger 
 app.UseSwagger();
@@ -32,7 +34,7 @@ app.UseSwaggerUI();
 
 app.MapControllers();
 
-app.Run();
+app.Run(); //E o iniciar do site, aplicativo
 
 
 

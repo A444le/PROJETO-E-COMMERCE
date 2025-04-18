@@ -1,0 +1,239 @@
+{
+	"info": {
+		"_postman_id": "60794cb7-b060-489c-aff7-83713b4db220",
+		"name": "Projeto Ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44167026",
+		"_collection_link": "https://alexandrinymiguel-2411831.postman.co/workspace/Alexandriny-Miguel's-Workspace~03c70f8b-d04f-4e56-8de0-675ac24c6176/collection/44167026-60794cb7-b060-489c-aff7-83713b4db220?action=share&source=collection_link&creator=44167026"
+	},
+	"item": [
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Listar todos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7154/api/produto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7154",
+							"path": [
+								"api",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"nome\": \"Computador\",\r\n \"descricao\": \"computador Y\",\r\n \"preco\": 10000.77,\r\n \"estoque disponivel\": 10,\r\n \"categoria\": \"superY\",\r\n \"imagem\": \"Imagem Editada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7154/api/produto",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7154",
+							"path": [
+								"api",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar por Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7154/api/produto/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7154",
+							"path": [
+								"api",
+								"produto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n \"nome\": \"Computador\",\r\n \"descricao\": \"computador X\",\r\n \"preco\": 9999.77,\r\n \"estoque disponivel\": 10,\r\n \"categoria\": \"superX\",\r\n \"imagem\": \"Imagem Editada\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7154/api/produto/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7154",
+							"path": [
+								"api",
+								"produto",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7154/api/produto/8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7154",
+							"path": [
+								"api",
+								"produto",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "New Request",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5237/api/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5237",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"nomecompleto\" : \"Alexandre Ribeiro de Oliveira\",\r\n    \"email\" : \"alexandreoliveira@gmail.com\",\r\n    \"telefone\" : 999994444,\r\n    \"endereco\" : \"rua joaquin 1010\",\r\n    \"senha\":29071980,\r\n    \"datacadastro\" : 2022-08-21\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5237/api/cliente",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5237",
+							"path": [
+								"api",
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
