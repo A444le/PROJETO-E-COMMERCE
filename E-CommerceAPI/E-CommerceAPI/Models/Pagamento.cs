@@ -10,10 +10,11 @@ public partial class Pagamento
     public int IdPedido { get; set; }
 
     public string FormadePagamento { get; set; } = null!;
-
+    
     public string StatusPagamento { get; set; } = null!;
-
+    
     public DateTime DataPagamento { get; set; }
 
-    public virtual Pedido IdPedidoNavigation { get; set; } = null!;
+    public virtual Pedido? IdPedidoNavigation { get; set; } = null!;
+    
 }

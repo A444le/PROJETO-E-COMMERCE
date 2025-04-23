@@ -12,7 +12,7 @@ namespace E_CommerceAPI.Controllers
     public class PagamentoController : ControllerBase
     {
         private IpagamentoRepository _pagamentoRepository;
-        public PagamentoController(PagamentoRepository pagamentoRepository)
+        public PagamentoController(IpagamentoRepository pagamentoRepository)
         {
             _pagamentoRepository = pagamentoRepository;
         }

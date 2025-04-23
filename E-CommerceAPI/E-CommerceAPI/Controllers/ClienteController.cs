@@ -38,7 +38,7 @@ namespace E_CommerceAPI.Controllers
             // 201 - Created <Criado>
             return Created();
         }
-        
+
         [HttpGet("{id}")]
         public IActionResult ListarPorId(int id)
         {
@@ -82,6 +82,16 @@ namespace E_CommerceAPI.Controllers
                 return NotFound("Produto nao encontrado!");
             }
         }
+        [HttpGet("{email}/{senha}")]
+    public IActionResult login (string email, string senha)
+    {
+        var cliente = _clienteRepository.BuscarPorEmailSenha(email,senha);
+        if (cliente == null) 
+                return NotFound();  
+        return Ok(cliente);
+
+
+    }
 
     }
 }
