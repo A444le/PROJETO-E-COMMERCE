@@ -1,4 +1,5 @@
 ﻿using E_CommerceAPI.Context;
+using E_CommerceAPI.DTO;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,7 @@ namespace E_CommerceAPI.Repositorios
                 _context = context;
             }
 
-            public void Atualizar(int id, Pagamento Pagamento)
+            public void Atualizar(int id, CadastrarPagamentosDto Pagamento)
             {
                 throw new NotImplementedException();
             }
@@ -27,10 +28,17 @@ namespace E_CommerceAPI.Repositorios
             {
                 throw new NotImplementedException();
             }
-
-            public void Cadastrar(Pagamento Pagamento)
+        //DTO
+            public void Cadastrar(CadastrarPagamentosDto Pagamento)
             {
-                _context.Pagamentos.Add(Pagamento);
+            Pagamento produtoCadastro = new Pagamento
+            {
+                FormadePagamento = Pagamento.FormadePagamento,
+                StatusPagamento = Pagamento.StatusPagamento,
+                DataPagamento = Pagamento.DataPagamento,
+
+            };
+                _context.Pagamentos.Add(produtoCadastro);
             _context.SaveChanges();
         }
 

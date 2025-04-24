@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using E_CommerceAPI.Context;
+using E_CommerceAPI.DTO;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
 using E_CommerceAPI.Repositorios;
@@ -22,13 +23,14 @@ namespace E_CommerceAPI.Controllers
 
             _produtoRepository = produtoRepository;
         }
+        //DTO
         [HttpGet]
         public IActionResult ListarProduto()
         {
             return Ok(_produtoRepository.ListarTodos());
         }
         [HttpPost]
-        public IActionResult CadastrarProduto(Produto produto)
+        public IActionResult CadastrarProduto(CadastrarProdutoDto produto)
         {
             _produtoRepository.Cadastrar(produto);
             return Created ();
@@ -46,7 +48,7 @@ namespace E_CommerceAPI.Controllers
         }
        
         [HttpPut("{id}")]
-        public IActionResult Editar(int id, Produto prod)
+        public IActionResult Editar(int id, CadastrarProdutoDto prod)
         {
             try
             {

@@ -1,16 +1,6 @@
 [
   {
     "ContainingType": "E_CommerceAPI.Controllers.ClienteController",
-    "Method": "ListarPagamentos",
-    "RelativePath": "api/Cliente",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "E_CommerceAPI.Controllers.ClienteController",
     "Method": "CadastrarProduto",
     "RelativePath": "api/Cliente",
     "HttpMethod": "POST",
@@ -19,7 +9,28 @@
     "Parameters": [
       {
         "Name": "Cliente",
-        "Type": "E_CommerceAPI.Models.Cliente",
+        "Type": "E_CommerceAPI.DTO.CadastrarClientesDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_CommerceAPI.Controllers.ClienteController",
+    "Method": "login",
+    "RelativePath": "api/Cliente/{email}/{senha}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "senha",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -56,7 +67,7 @@
       },
       {
         "Name": "prod",
-        "Type": "E_CommerceAPI.Models.Cliente",
+        "Type": "E_CommerceAPI.DTO.CadastrarClientesDto",
         "IsRequired": true
       }
     ],
@@ -106,6 +117,16 @@
   },
   {
     "ContainingType": "E_CommerceAPI.Controllers.PagamentoController",
+    "Method": "ListarProduto",
+    "RelativePath": "api/Pagamento",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_CommerceAPI.Controllers.PagamentoController",
     "Method": "ListarPagamentos",
     "RelativePath": "api/Pagamento",
     "HttpMethod": "GET",
@@ -124,7 +145,7 @@
     "Parameters": [
       {
         "Name": "Pagamento",
-        "Type": "E_CommerceAPI.Models.Pagamento",
+        "Type": "E_CommerceAPI.DTO.CadastrarPagamentosDto",
         "IsRequired": true
       }
     ],
@@ -176,7 +197,7 @@
     "Parameters": [
       {
         "Name": "produto",
-        "Type": "E_CommerceAPI.Models.Produto",
+        "Type": "E_CommerceAPI.DTO.CadastrarProdutoDto",
         "IsRequired": true
       }
     ],
@@ -213,7 +234,7 @@
       },
       {
         "Name": "prod",
-        "Type": "E_CommerceAPI.Models.Produto",
+        "Type": "E_CommerceAPI.DTO.CadastrarProdutoDto",
         "IsRequired": true
       }
     ],
@@ -230,6 +251,22 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_CommerceAPI.Controllers.ClienteController",
+    "Method": "BuscarPorNome",
+    "RelativePath": "buscar/{nome}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nome",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],

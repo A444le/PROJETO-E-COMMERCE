@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using E_CommerceAPI.Context;
+using E_CommerceAPI.DTO;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -24,7 +25,7 @@ namespace E_CommerceAPI.Repositorios
         _context = context; 
         }
 
-        public void Atualizar(int id, Produto produto)
+        public void Atualizar(int id, CadastrarProdutoDto produto)
         {
             Produto produtoEncontrado = _context.Produtos.Find(id);
             if (produtoEncontrado == null)
@@ -55,9 +56,19 @@ namespace E_CommerceAPI.Repositorios
             return _context.Produtos.FirstOrDefault(p => p.IdProduto == id);
         }
 
-        public void Cadastrar(Produto produto)
+        public void Cadastrar(CadastrarProdutoDto produto)
         {
-          _context.Produtos.Add(produto);
+            //DTO
+            Produto produtoCadastro = new Produto
+            {
+              Nome = produto.Nome,
+              Descricao = produto.Descricao,    
+              Preco = produto.Preco,
+              EstoqueDisponivel = produto.EstoqueDisponivel,
+              Categoria = produto.Categoria,
+              Imagem = produto.Imagem
+            };
+          _context.Produtos.Add(produtoCadastro);                                                                               
             _context.SaveChanges();
         }
 

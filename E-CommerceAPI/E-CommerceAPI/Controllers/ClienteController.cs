@@ -1,4 +1,5 @@
 ﻿using E_CommerceAPI.Context;
+using E_CommerceAPI.DTO;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
 using E_CommerceAPI.Repositorios;
@@ -19,14 +20,10 @@ namespace E_CommerceAPI.Controllers
             _clienteRepository = ClienteRepository;
         }
         //PARA APARECER NO SITE (LISTAR NO SITE)
-        [HttpGet]
-        public IActionResult ListarPagamentos()
-        {
-            return Ok(_clienteRepository.ListarTodos());
-        }  // Cadastrar Produto
+      
         // Post - Cadastrar uma ou mais informacoes para o front 
         [HttpPost]
-        public IActionResult CadastrarProduto(Cliente Cliente)
+        public IActionResult CadastrarProduto(CadastrarClientesDto Cliente)
         {
             // 1 - Coloco o Produto no banco de dados
             _clienteRepository.Cadastrar(Cliente);
@@ -52,7 +49,7 @@ namespace E_CommerceAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Editar(int id, Cliente prod)
+        public IActionResult Editar(int id, CadastrarClientesDto prod)
         {
             try
             {
@@ -82,6 +79,12 @@ namespace E_CommerceAPI.Controllers
                 return NotFound("Produto nao encontrado!");
             }
         }
+        [HttpGet("/buscar/{nome}")]
+        public IActionResult BuscarPorNome(string nome)
+        {
+            return Ok(_clienteRepository.BuscarClientePorNome(nome));
+
+        }
         [HttpGet("{email}/{senha}")]
     public IActionResult login (string email, string senha)
     {
@@ -95,9 +98,3 @@ namespace E_CommerceAPI.Controllers
 
     }
 }
-
-
-
-
-
-

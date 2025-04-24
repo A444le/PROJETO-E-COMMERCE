@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using E_CommerceAPI.Context;
+using E_CommerceAPI.DTO;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
 
@@ -25,7 +26,7 @@ namespace E_CommerceAPI.Repositorios;
                 _context = context;
             }
 
-    public void Atualizar(int id, Cliente clienteNovo)
+    public void Atualizar(int id, CadastrarClientesDto clienteNovo)
     {
         Cliente clienteEncontrado = _context.Clientes.Find(id);
         if (clienteEncontrado == null)
@@ -41,11 +42,20 @@ namespace E_CommerceAPI.Repositorios;
 
         _context.SaveChanges();
     }
- /// <summary>
- /// Acesse o banco de dados e encontre o cliente com email e 
- /// senha fornecidos 
- /// </summary>
- /// <returns>cliente ou nulo</returns>returns>
+
+
+    public List<Cliente> BuscarClientePorNome(string nome)
+    {
+        //Where traz todos que atendem uma condicao 
+        var listaClientes = _context.Clientes.Where(c => c.NomeCompleto == nome).ToList();
+        return listaClientes;  
+    }
+
+    /// <summary>
+    /// Acesse o banco de dados e encontre o cliente com email e 
+    /// senha fornecidos 
+    /// </summary>
+    /// <returns>cliente ou nulo</returns>returns>
     public Cliente? BuscarPorEmailSenha(string email, string senha)
     {
         //Encontrar o cliente que possui o email e senha fornecidos
@@ -61,10 +71,21 @@ namespace E_CommerceAPI.Repositorios;
         //First or Default
         return _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
             }
-
-            public void Cadastrar(Cliente Cliente)
+    //DTO
+            public void Cadastrar(CadastrarClientesDto cliente)
             {
-                _context.Clientes.Add(Cliente);
+        Cliente cadastrarCliente = new Cliente
+        {
+            NomeCompleto = cliente.NomeCompleto,    
+            Email = cliente.Email,  
+            Telefone = cliente.Telefone,
+            Endereco = cliente.Endereco,
+            Senha = cliente.Senha,
+            DataCadastro = cliente.DataCadastro,    
+
+
+        };
+                _context.Clientes.Add(cadastrarCliente);
         _context.SaveChanges(); // Sempre colocar o SaveChanges quando for mudar algo no Banco de Dados
     }
 
@@ -89,7 +110,9 @@ namespace E_CommerceAPI.Repositorios;
 
             public List<Cliente> ListarTodos()
             {
-                return _context.Clientes.ToList();
+                return _context.Clientes.OrderBy(c => c.NomeCompleto).ToList();
+
+
             }
         }
     
