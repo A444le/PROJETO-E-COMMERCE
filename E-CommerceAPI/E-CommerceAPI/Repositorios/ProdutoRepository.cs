@@ -75,14 +75,14 @@ namespace E_CommerceAPI.Repositorios
         public void Deletar(int id)
         {
             //1 - Encontrar o que eu quero Excluir 
-            Produto ProdutoEncontrado = _context.Produtos.Find(id);
+            Produto produtoEncontrado = _context.Produtos.Find(id);
             //Caso nao encontre o produto, lanco um erro
-            if (ProdutoEncontrado == null)
+            if (produtoEncontrado == null)
             {
                 throw new Exception();
             }
             //Caso eu encontre o produto, removo ele
-            _context.Produtos.Remove(ProdutoEncontrado);
+            _context.Produtos.Remove(produtoEncontrado);
             //Salvo as alteracoes
             _context.SaveChanges();
 

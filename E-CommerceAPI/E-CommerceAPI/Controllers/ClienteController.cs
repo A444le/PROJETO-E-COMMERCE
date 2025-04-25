@@ -15,18 +15,18 @@ namespace E_CommerceAPI.Controllers
     {
         // ESSES CODIGOS SAO OBRIGATORIOS 
         private IClienteRepository _clienteRepository;
-        public ClienteController(ClienteRepository ClienteRepository)
+        public ClienteController(IClienteRepository clienteRepository)
         {
-            _clienteRepository = ClienteRepository;
+            _clienteRepository = clienteRepository;
         }
         //PARA APARECER NO SITE (LISTAR NO SITE)
       
         // Post - Cadastrar uma ou mais informacoes para o front 
         [HttpPost]
-        public IActionResult CadastrarProduto(CadastrarClientesDto Cliente)
+        public IActionResult CadastrarProduto(CadastrarClientesDto cliente)
         {
             // 1 - Coloco o Produto no banco de dados
-            _clienteRepository.Cadastrar(Cliente);
+            _clienteRepository.Cadastrar(cliente);
 
             // 2 - Salvo a alteracao
 
@@ -48,6 +48,12 @@ namespace E_CommerceAPI.Controllers
 
         }
 
+        [HttpGet]
+        public IActionResult Listarlientes()
+        {
+            return Ok(_clienteRepository.ListarTodos());
+        }
+
         [HttpPut("{id}")]
         public IActionResult Editar(int id, CadastrarClientesDto prod)
         {
@@ -62,7 +68,7 @@ namespace E_CommerceAPI.Controllers
             }
 
         }
-
+       
 
 
         [HttpDelete("{id}")]

@@ -12,9 +12,9 @@ namespace E_CommerceAPI.Controllers
     public class ItemDoPedidoController : ControllerBase
     {
         private IItemDoPedidoRepository _ItemDoPedidoRepository;
-        public ItemDoPedidoController(ItemDoPedidoRepository ItemDoPedidoRepository)
+        public ItemDoPedidoController(IItemDoPedidoRepository itemDoPedidoRepository)
         {
-            _ItemDoPedidoRepository = ItemDoPedidoRepository;
+            _ItemDoPedidoRepository = itemDoPedidoRepository;
         }
         [HttpGet]
         public IActionResult ListarPagamentos()
@@ -22,10 +22,10 @@ namespace E_CommerceAPI.Controllers
             return Ok(_ItemDoPedidoRepository.ListarTodos());
         }
         [HttpPost]
-        public IActionResult CadastrarProduto(ItemPedido ItemDoPedido)
+        public IActionResult CadastrarProduto(ItemPedido itemDoPedido)
         {
 
-            _ItemDoPedidoRepository.Cadastrar(ItemDoPedido);
+            _ItemDoPedidoRepository.Cadastrar(itemDoPedido);
 
 
             return Created();

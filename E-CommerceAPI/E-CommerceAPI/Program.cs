@@ -22,7 +22,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<EcommerceContext>();
 builder.Services.AddTransient<IProdutoRepository, ProdutoRepository>();
 builder.Services.AddTransient<IClienteRepository, ClienteRepository>();
-builder.Services.AddTransient<IpagamentoRepository, PagamentoRepository>();
+builder.Services.AddTransient<IPagamentoRepository, PagamentoRepository>();
+builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
+builder.Services.AddTransient<IItemDoPedidoRepository, ItemDoPedidoRepository>();
 
 
 var app = builder.Build(); //O C# cosntroi o site por meio desse codigo

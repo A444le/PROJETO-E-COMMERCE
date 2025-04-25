@@ -8,7 +8,7 @@ namespace E_CommerceAPI.Repositorios
 {
   
    
-        public class PagamentoRepository : IpagamentoRepository
+        public class PagamentoRepository : IPagamentoRepository
         {
            
             private readonly EcommerceContext _context;
@@ -19,7 +19,7 @@ namespace E_CommerceAPI.Repositorios
                 _context = context;
             }
 
-            public void Atualizar(int id, CadastrarPagamentosDto Pagamento)
+            public void Atualizar(int id, CadastrarPagamentosDto pagamento)
             {
                 throw new NotImplementedException();
             }
@@ -29,13 +29,13 @@ namespace E_CommerceAPI.Repositorios
                 throw new NotImplementedException();
             }
         //DTO
-            public void Cadastrar(CadastrarPagamentosDto Pagamento)
+            public void Cadastrar(CadastrarPagamentosDto pagamento)
             {
             Pagamento produtoCadastro = new Pagamento
             {
-                FormadePagamento = Pagamento.FormadePagamento,
-                StatusPagamento = Pagamento.StatusPagamento,
-                DataPagamento = Pagamento.DataPagamento,
+                FormadePagamento = pagamento.FormadePagamento,
+                StatusPagamento = pagamento.StatusPagamento,
+                DataPagamento = pagamento.DataPagamento,
 
             };
                 _context.Pagamentos.Add(produtoCadastro);

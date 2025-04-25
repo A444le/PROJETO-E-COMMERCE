@@ -19,5 +19,7 @@ public partial class Cliente
 
     public DateOnly? DataCadastro { get; set; }
 
+
+    //Codigo para mostrar pedidos do usuario Citado 
     public virtual ICollection<Pedido> Pedidos { get; set; } = new List<Pedido>();
 }

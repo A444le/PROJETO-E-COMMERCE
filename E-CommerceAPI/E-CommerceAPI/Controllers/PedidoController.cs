@@ -1,4 +1,5 @@
 ﻿using E_CommerceAPI.Context;
+using E_CommerceAPI.DTO;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
 using E_CommerceAPI.Repositorios;
@@ -12,7 +13,7 @@ namespace E_CommerceAPI.Controllers
     public class PedidoController : ControllerBase
     {
         private IPedidoRepository _pedidoRepository;
-        public PedidoController(PedidoRepository pedidoRepository)
+        public PedidoController(IPedidoRepository pedidoRepository)
         {
             _pedidoRepository = pedidoRepository;
         }
@@ -22,7 +23,7 @@ namespace E_CommerceAPI.Controllers
             return Ok(_pedidoRepository.ListarTodos());
         }
         [HttpPost]
-        public IActionResult CadastrarProduto(Pedido Pedido)
+        public IActionResult CadastrarProduto(CadastrarPedidoDto Pedido)
         {
             _pedidoRepository.Cadastrar(Pedido);
 

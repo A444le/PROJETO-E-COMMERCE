@@ -16,7 +16,7 @@ namespace E_CommerceAPI.Repositorios
                 _context = context;
             }
 
-        public void Atualizar(int id, ItemPedido ItemPedido)
+        public void Atualizar(int id, ItemPedido itemPedido)
         {
             throw new NotImplementedException();
         }
@@ -26,9 +26,9 @@ namespace E_CommerceAPI.Repositorios
             throw new NotImplementedException();
         }
 
-        public void Cadastrar(ItemPedido ItemPedido)
+        public void Cadastrar(ItemPedido itemPedido)
         {
-            _context.ItemPedidos.Add(ItemPedido);
+            _context.ItemPedidos.Add(itemPedido);
             _context.SaveChanges();
         }
 
