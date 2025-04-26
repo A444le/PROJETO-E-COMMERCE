@@ -21,37 +21,52 @@ namespace E_CommerceAPI.Repositorios
 
             public void Atualizar(int id, CadastrarPagamentosDto pagamento)
             {
-                throw new NotImplementedException();
-            }
-
-            public Pagamento BuscarPorId(int id)
+            Pagamento pagamentoEncontrado = _context.Pagamentos.Find(id);
+            if (pagamentoEncontrado == null)
             {
-                throw new NotImplementedException();
+
+                pagamentoEncontrado.FormadePagamento = pagamento.FormadePagamento;
+                pagamentoEncontrado.StatusPagamento = pagamento.StatusPagamento;
+                pagamentoEncontrado.DataPagamento = pagamento.DataPagamento;
+               
+                //pagamentoEncontrado.IdPedido = pagamento.IdPedido;
+                _context.SaveChanges();
             }
+        }
+
+       
+        public Pagamento BuscarPorId(int id)
+            {
+            return _context.Pagamentos.FirstOrDefault(p => p.IdPagamento == id);
+        }
         //DTO
             public void Cadastrar(CadastrarPagamentosDto pagamento)
             {
-            Pagamento produtoCadastro = new Pagamento
+            Pagamento pagamentoCadastro = new Pagamento
             {
+                IdPedido = pagamento.IdPedido,
                 FormadePagamento = pagamento.FormadePagamento,
                 StatusPagamento = pagamento.StatusPagamento,
-                DataPagamento = pagamento.DataPagamento,
+                DataPagamento = pagamento.DataPagamento
 
             };
-                _context.Pagamentos.Add(produtoCadastro);
+                _context.Pagamentos.Add(pagamentoCadastro);
             _context.SaveChanges();
         }
 
-            public void Deletar(int id)
+        public void Deletar(int id)
+        {
+            Pagamento pagamentoEncontrado = _context.Pagamentos.Find(id);
+            if (pagamentoEncontrado == null)
             {
-                throw new NotImplementedException();
+                throw new Exception();
             }
-
+            _context.Pagamentos.Remove(pagamentoEncontrado);
+            _context.SaveChanges();
+        }
             public List<Pagamento> ListarTodos()
             {
             return _context.Pagamentos.Include(p => p.IdPedidoNavigation).ToList();
             }
         }
     }
-
-

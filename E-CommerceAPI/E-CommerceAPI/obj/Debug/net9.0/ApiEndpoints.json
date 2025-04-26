@@ -144,7 +144,44 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "Pagamento",
+        "Name": "pagamento",
+        "Type": "E_CommerceAPI.DTO.CadastrarPagamentosDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_CommerceAPI.Controllers.PagamentoController",
+    "Method": "ListarPorId",
+    "RelativePath": "api/Pagamento/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "E_CommerceAPI.Controllers.PagamentoController",
+    "Method": "Editar",
+    "RelativePath": "api/Pagamento/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "pagamento",
         "Type": "E_CommerceAPI.DTO.CadastrarPagamentosDto",
         "IsRequired": true
       }

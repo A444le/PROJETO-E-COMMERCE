@@ -2,6 +2,7 @@
 {
     public class CadastrarPagamentosDto
     {
+        public int IdPedido { get; set; }
         public string FormadePagamento { get; set; } = null!;
 
         public string StatusPagamento { get; set; } = null!;

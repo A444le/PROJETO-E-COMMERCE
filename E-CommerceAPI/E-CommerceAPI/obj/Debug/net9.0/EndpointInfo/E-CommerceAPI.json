@@ -265,6 +265,67 @@
       }
     },
     "/api/Pagamento/{id}": {
+      "get": {
+        "tags": [
+          "Pagamento"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Pagamento"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CadastrarPagamentosDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CadastrarPagamentosDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CadastrarPagamentosDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Pagamento"
@@ -490,6 +551,10 @@
       "CadastrarPagamentosDto": {
         "type": "object",
         "properties": {
+          "idPedido": {
+            "type": "integer",
+            "format": "int32"
+          },
           "formadePagamento": {
             "type": "string",
             "nullable": true
@@ -566,48 +631,6 @@
         },
         "additionalProperties": false
       },
-      "Cliente": {
-        "type": "object",
-        "properties": {
-          "idCliente": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nomeCompleto": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "telefone": {
-            "type": "string",
-            "nullable": true
-          },
-          "endereco": {
-            "type": "string",
-            "nullable": true
-          },
-          "senha": {
-            "type": "string",
-            "nullable": true
-          },
-          "dataCadastro": {
-            "type": "string",
-            "format": "date",
-            "nullable": true
-          },
-          "pedidos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Pedido"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "ItemPedido": {
         "type": "object",
         "properties": {
@@ -627,48 +650,8 @@
             "type": "integer",
             "format": "int32"
           },
-          "idPedidoNavigation": {
-            "$ref": "#/components/schemas/Pedido"
-          },
           "idProdutoNavigation": {
             "$ref": "#/components/schemas/Produto"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Pedido": {
-        "type": "object",
-        "properties": {
-          "idPedido": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "dataPedido": {
-            "type": "string",
-            "format": "date"
-          },
-          "statusPedido": {
-            "type": "string",
-            "nullable": true
-          },
-          "valorTotal": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "idCliente": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "idClienteNavigation": {
-            "$ref": "#/components/schemas/Cliente"
-          },
-          "itemPedidos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ItemPedido"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -702,13 +685,6 @@
           },
           "imagem": {
             "type": "string",
-            "nullable": true
-          },
-          "itemPedidos": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/ItemPedido"
-            },
             "nullable": true
           }
         },
