@@ -551,6 +551,10 @@
       "CadastrarPagamentosDto": {
         "type": "object",
         "properties": {
+          "idPagamento": {
+            "type": "integer",
+            "format": "int32"
+          },
           "idPedido": {
             "type": "integer",
             "format": "int32"

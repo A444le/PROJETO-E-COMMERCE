@@ -3,7 +3,9 @@ using E_CommerceAPI.DTO;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
 using E_CommerceAPI.Repositorios;
+using E_CommerceAPI.ServiceS;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace E_CommerceAPI.Controllers
@@ -13,6 +15,10 @@ namespace E_CommerceAPI.Controllers
     [ApiController]
     public class ClienteController : ControllerBase
     {
+        private IClienteRepository clienteRepository;
+
+
+        private PasswordService passwordservice = new PasswordService();
         // ESSES CODIGOS SAO OBRIGATORIOS 
         private IClienteRepository _clienteRepository;
         public ClienteController(IClienteRepository clienteRepository)
@@ -23,7 +29,7 @@ namespace E_CommerceAPI.Controllers
       
         // Post - Cadastrar uma ou mais informacoes para o front 
         [HttpPost]
-        public IActionResult CadastrarProduto(CadastrarClientesDto cliente)
+        public IActionResult CadastrarCliente(CadastrarClientesDto cliente)
         {
             // 1 - Coloco o Produto no banco de dados
             _clienteRepository.Cadastrar(cliente);
@@ -101,6 +107,6 @@ namespace E_CommerceAPI.Controllers
 
 
     }
-
+     
     }
 }

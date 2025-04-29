@@ -44,13 +44,13 @@ namespace E_CommerceAPI.Repositorios
             {
             Pagamento pagamentoCadastro = new Pagamento
             {
-                IdPedido = pagamento.IdPedido,
+                IdPagamento = pagamento.IdPagamento,
                 FormadePagamento = pagamento.FormadePagamento,
                 StatusPagamento = pagamento.StatusPagamento,
                 DataPagamento = pagamento.DataPagamento
 
             };
-                _context.Pagamentos.Add(pagamentoCadastro);
+                //_context.Pagamentos.Add(pagamentoCadastro);
             _context.SaveChanges();
         }
 

@@ -3,6 +3,7 @@ using E_CommerceAPI.Context;
 using E_CommerceAPI.DTO;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
+using E_CommerceAPI.ServiceS;
 using E_CommerceAPI.ViewModels;
 
 namespace E_CommerceAPI.Repositorios;
@@ -72,23 +73,26 @@ namespace E_CommerceAPI.Repositorios;
         //First or Default
         return _context.Clientes.FirstOrDefault(c => c.IdCliente == id);
             }
-    //DTO
-            public void Cadastrar(CadastrarClientesDto cliente)
+             //DTO
+            public void Cadastrar(CadastrarClientesDto clienteDto)
             {
+        var passwordService = new PasswordService();
+
         Cliente cadastrarCliente = new Cliente
         {
-            NomeCompleto = cliente.NomeCompleto,    
-            Email = cliente.Email,  
-            Telefone = cliente.Telefone,
-            Endereco = cliente.Endereco,
-            Senha = cliente.Senha,
-            DataCadastro = cliente.DataCadastro,    
-
-
+            NomeCompleto = clienteDto.NomeCompleto,
+            Email = clienteDto.Email,
+            Telefone = clienteDto.Telefone,
+            Endereco = clienteDto.Endereco,
+            Senha = clienteDto.Senha,
+            DataCadastro = clienteDto.DataCadastro,
         };
+            cadastrarCliente.Senha = passwordService.HashPassword(cadastrarCliente);
+          
                 _context.Clientes.Add(cadastrarCliente);
-        _context.SaveChanges(); // Sempre colocar o SaveChanges quando for mudar algo no Banco de Dados
+                _context.SaveChanges(); // Sempre colocar o SaveChanges quando for mudar algo no Banco de Dados
     }
+     
 
             public void Deletar(int id)
             {
@@ -123,5 +127,3 @@ namespace E_CommerceAPI.Repositorios;
             }
         }
     
-
-
