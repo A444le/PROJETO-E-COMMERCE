@@ -1,9 +1,11 @@
 using System.Linq.Expressions;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
 using E_CommerceAPI.Context;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Repositorios;
 using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.IdentityModel.Tokens;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +28,23 @@ builder.Services.AddTransient<IPagamentoRepository, PagamentoRepository>();
 builder.Services.AddTransient<IPedidoRepository, PedidoRepository>();
 builder.Services.AddTransient<IItemDoPedidoRepository, ItemDoPedidoRepository>();
 
+//Codigo para fazer o token funcionar 
+builder.Services.AddAuthentication("bearer").AddJwtBearer("bearer", options =>
+{
+    options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+    {
+        ValidateIssuer = true, 
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,  //validar a chave de seguranca 
+        ValidIssuer = "ecommerce",
+        ValidAudience = "ecommerce",
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Minha-Chave-Ultra-Mega-secreta-do-Senai"))
+    };
+});
+
+//Limita os Endpoints do Usuario 
+builder.Services.AddAuthentication();
 
 var app = builder.Build(); //O C# cosntroi o site por meio desse codigo
 
@@ -35,6 +54,10 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.MapControllers();
+
+//Token
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.Run(); //E o iniciar do site, aplicativo
 

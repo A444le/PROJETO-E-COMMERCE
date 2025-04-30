@@ -26,9 +26,20 @@ namespace E_CommerceAPI.Repositorios
         }
 
 
-        public void Atualizar(int id, Pedido pedido)
+        public void Atualizar(int id, CadastrarPedidoDto pedido)
         {
-            throw new NotImplementedException();
+            Pedido pedidoEncontrado = _context.Pedidos.Find(id);
+            if (pedidoEncontrado == null)
+            {
+
+                throw new Exception();
+            }
+            pedidoEncontrado.StatusPedido = pedido.StatusPedido;
+            pedidoEncontrado.DataPedido = pedido.DataPedido;
+            pedidoEncontrado.ValorTotal = pedido.ValorTotal;
+            
+
+            _context.SaveChanges();
         }
 
 

@@ -3,7 +3,9 @@ using E_CommerceAPI.DTO;
 using E_CommerceAPI.Interfaces;
 using E_CommerceAPI.Models;
 using E_CommerceAPI.Repositorios;
+using E_CommerceAPI.Services;
 using E_CommerceAPI.ServiceS;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -55,6 +57,7 @@ namespace E_CommerceAPI.Controllers
         }
 
         [HttpGet]
+        [Authorize] //Codigo para autorizar o usuario a exibir os clientes
         public IActionResult Listarlientes()
         {
             return Ok(_clienteRepository.ListarTodos());
@@ -85,28 +88,35 @@ namespace E_CommerceAPI.Controllers
                 _clienteRepository.Deletar(id);
                 return NoContent();
             }
-
             catch (Exception ex)
             {
                 return NotFound("Produto nao encontrado!");
             }
         }
+
         [HttpGet("/buscar/{nome}")]
         public IActionResult BuscarPorNome(string nome)
         {
             return Ok(_clienteRepository.BuscarClientePorNome(nome));
 
         }
-        [HttpGet("{email}/{senha}")]
-    public IActionResult login (string email, string senha)
-    {
-        var cliente = _clienteRepository.BuscarPorEmailSenha(email,senha);
-        if (cliente == null) 
-                return NotFound();  
-        return Ok(cliente);
+
+        [HttpPost("login")]
+        public IActionResult login (LoginDto login)
+        {
+            var cliente = _clienteRepository.BuscarPorEmailSenha(login.Email, login.Senha);
+
+            if (cliente == null)
+            {
+                return Unauthorized("Email ou Senha invalidos!");
+            }
 
 
-    }
+            var tokenService = new TokenService();
+            var token = tokenService.GenerateToken(cliente.Email);
+
+            return Ok(token);
+        }
      
     }
 }
